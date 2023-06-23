@@ -12,7 +12,8 @@ class Uuid
 
     private static function randomBytes($bytes)
     {
-        return call_user_func(array('static', static::initRandom()), $bytes);
+        $initRandom = static::class.'::initRandom';
+        return call_user_func($initRandom(), $bytes);
     }
 
     private static function initRandom()
